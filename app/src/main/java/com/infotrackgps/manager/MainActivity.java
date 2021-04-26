@@ -1,9 +1,9 @@
 package com.infotrackgps.manager;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -15,6 +15,10 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class MainActivity extends AppCompatActivity {
     private WebView mywebView;
 
@@ -23,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView logo;
     TextView text1, text2;
     ProgressBar progressBar;
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +44,19 @@ public class MainActivity extends AppCompatActivity {
         text1=findViewById(R.id.text1);
         text2=findViewById(R.id.text2);
         progressBar=findViewById(R.id.progressbar);
+        fab=findViewById(R.id.fab);
 
         logo.setAnimation(topAnim);
         text1.setAnimation(bottomAnim);
         text2.setAnimation(bottomAnim);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:+919708660866"));
+                startActivity(intent);
+            }
+        });
 
         mywebView=(WebView) findViewById(R.id.webview);
         mywebView.setWebViewClient(new WebViewClient());

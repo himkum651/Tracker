@@ -53,6 +53,19 @@
        android:layout_height="wrap_content"
        android:layout_centerInParent="true"
        android:visibility="invisible">
-
    </ProgressBar>
-</RelativeLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/call"
+        app:maxImageSize="56dp"
+        app:tint="@android:color/white"
+        android:contentDescription="fab"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="50dp" />
+
+   </RelativeLayout>
