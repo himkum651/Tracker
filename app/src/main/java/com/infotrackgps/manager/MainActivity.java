@@ -12,6 +12,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     Animation topAnim, bottomAnim;
     ImageView logo;
     TextView text1, text2;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         logo=findViewById(R.id.logo);
         text1=findViewById(R.id.text1);
         text2=findViewById(R.id.text2);
+        progressBar=findViewById(R.id.progressbar);
 
         logo.setAnimation(topAnim);
         text1.setAnimation(bottomAnim);
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         mywebView=(WebView) findViewById(R.id.webview);
         mywebView.setWebViewClient(new WebViewClient());
         mywebView.loadUrl("http://infotechs.in");
+        progressBar.setVisibility(View.VISIBLE);
         WebSettings webSettings=mywebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
@@ -54,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 logo.setVisibility(View.INVISIBLE);
                 text1.setVisibility(View.INVISIBLE);
                 text2.setVisibility(View.INVISIBLE);
+                progressBar.setVisibility(View.INVISIBLE);
             }
         });
     }
