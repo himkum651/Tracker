@@ -57,6 +57,9 @@ public class LoginActivity extends AppCompatActivity {
                     editor.apply();
                 }else{
                     isChecked=false;
+                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                    editor.putString(isPasswordSaved,"5");
+                    editor.apply();
                 }
             }
         });
