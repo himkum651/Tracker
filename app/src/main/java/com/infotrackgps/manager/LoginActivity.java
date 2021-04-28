@@ -72,6 +72,9 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 editor.apply();
+                name.setText("");
+                password.setText("");
+                Toast.makeText(this, "Sign Up Successful Please Login", Toast.LENGTH_SHORT).show();
             }
 
         });
