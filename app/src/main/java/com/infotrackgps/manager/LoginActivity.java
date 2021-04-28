@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText name, password;
     Button buttonSignUp, buttonLogIn;
     CheckBox saveCheckbox;
-    Boolean isChecked=false;
+
 
     SharedPreferences sharedpreferences;
 
@@ -42,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
             String shpassword = sharedpreferences.getString(Password, "");
             name.setText(shname);
             password.setText(shpassword);
+            saveCheckbox.setChecked(true);
 
         }
 
@@ -51,15 +52,17 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(saveCheckbox.isChecked()){
-                    isChecked=true;
+
                     SharedPreferences.Editor editor = sharedpreferences.edit();
                     editor.putString(isPasswordSaved,"1");
                     editor.apply();
                 }else{
-                    isChecked=false;
+
                     SharedPreferences.Editor editor = sharedpreferences.edit();
                     editor.putString(isPasswordSaved,"5");
                     editor.apply();
+                    name.setText("");
+                    password.setText("");
                 }
             }
         });
@@ -87,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
 
             String shname = sharedpreferences.getString(Name, "");
             String shpassword = sharedpreferences.getString(Password, "");
-            if ((shname.equals(name.getText().toString())) || (shpassword.equals(password.getText().toString()))) {
+            if ((shname.equals(name.getText().toString())) && (shpassword.equals(password.getText().toString()))) {
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             }
