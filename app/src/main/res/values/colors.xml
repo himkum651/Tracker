@@ -4,5 +4,7 @@
     <color name="primary">#FF7256</color>
     <color name="primary_dark">#FF7256</color>
     <color name="accent">#FF7256</color>
+    <color name="titlecolour">#FFFFFF</color>
 
 </resources>
+

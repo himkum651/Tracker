@@ -22,7 +22,6 @@ public class LoginActivity extends AppCompatActivity {
     Button buttonSignUp, buttonLogIn;
     CheckBox saveCheckbox;
 
-
     SharedPreferences sharedpreferences;
 
     @Override
@@ -43,21 +42,16 @@ public class LoginActivity extends AppCompatActivity {
             name.setText(shname);
             password.setText(shpassword);
             saveCheckbox.setChecked(true);
-
         }
-
-
 
         saveCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(saveCheckbox.isChecked()){
-
                     SharedPreferences.Editor editor = sharedpreferences.edit();
                     editor.putString(isPasswordSaved,"1");
                     editor.apply();
                 }else{
-
                     SharedPreferences.Editor editor = sharedpreferences.edit();
                     editor.putString(isPasswordSaved,"5");
                     editor.apply();
@@ -74,29 +68,20 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedpreferences.edit();
                 editor.putString(Name, name.getText().toString());
                 editor.putString(Password, password.getText().toString());
-
-
-
                 editor.apply();
                 name.setText("");
                 password.setText("");
                 Toast.makeText(this, "Sign Up Successful Please Login", Toast.LENGTH_SHORT).show();
             }
-
         });
 
         buttonLogIn.setOnClickListener(v -> {
-
-
             String shname = sharedpreferences.getString(Name, "");
             String shpassword = sharedpreferences.getString(Password, "");
             if ((shname.equals(name.getText().toString())) && (shpassword.equals(password.getText().toString()))) {
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             }
-
         });
-
-
     }
 }
